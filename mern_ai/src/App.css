@@ -36,6 +36,20 @@ body {
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
+}
+
+.mainContent {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileHeader {
+  display: none;
 }
 
 /* Custom Scrollbar */
@@ -60,5 +74,51 @@ body {
 @media screen and (max-width: 780px) {
   .App {
     flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 16px;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .menuBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+
+  .menuBtn:hover {
+    background-color: var(--bg-tertiary);
+  }
+
+  .mobileHeaderTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-color);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .mainContent {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
   }
 }

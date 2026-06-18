@@ -3,25 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext.jsx";
 
 const withAuthHOC = (WrappedComponent) => {
-    
-
     return (props) => {
         const navigate = useNavigate();
-        const { setLogin } = useContext(AuthContext); 
+        const { isLogin, setLogin } = useContext(AuthContext); 
+
+        const isAuthenticated = isLogin === true || isLogin === "true";
 
         useEffect(() => {
-            const isLogin = localStorage.getItem("isLogin");
-            
-    
-            if (!isLogin) {
+            const localLogin = localStorage.getItem("isLogin");
+            if (!localLogin) {
                 setLogin(false);
                 navigate("/login");
             }
-        }, [navigate]);
+        }, [navigate, setLogin]);
 
-       
-       
-        
+        if (!isAuthenticated) {
+            return null;
+        }
 
         return <WrappedComponent {...props} />;
     };

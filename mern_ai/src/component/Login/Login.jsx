@@ -5,7 +5,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 
 import {auth,provider} from "../../Utlis/Firebase"
 import {signInWithPopup} from "firebase/auth"
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Utlis/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from "../../Utlis/axios"
@@ -16,6 +16,19 @@ function Login() {
  const{isLogin, setLogin, userInfo, setUserInfo}=useContext(AuthContext);
 
  const navigate=useNavigate();
+
+ const isAuthenticated = isLogin === true || isLogin === "true";
+
+ useEffect(() => {
+   if (isAuthenticated && userInfo) {
+     if (userInfo.role === "admin") {
+       navigate("/admin", { replace: true });
+     } else {
+       navigate("/dashboard", { replace: true });
+     }
+   }
+ }, [isAuthenticated, userInfo, navigate]);
+
 const handleLogin=async()=>{
     try {
         const result = await signInWithPopup(auth, provider);
@@ -28,12 +41,18 @@ const handleLogin=async()=>{
 
         const response = await axios.post('/api/user', UserData);
         if (response.data.user) {
-            setUserInfo(response.data.user);
-            localStorage.setItem("userInfo", JSON.stringify(response.data.user));
+            const dbUser = response.data.user;
+            setUserInfo(dbUser);
+            localStorage.setItem("userInfo", JSON.stringify(dbUser));
             setLogin(true);
-            localStorage.setItem("isLogin", true);
-            navigate("/dashboard");
-            console.log("Logged in user:", response.data.user);
+            localStorage.setItem("isLogin", "true");
+            
+            if (dbUser.role === "admin") {
+                navigate("/admin", { replace: true });
+            } else {
+                navigate("/dashboard", { replace: true });
+            }
+            console.log("Logged in user:", dbUser);
         } else {
             alert("Login failed: invalid response from server.");
         }

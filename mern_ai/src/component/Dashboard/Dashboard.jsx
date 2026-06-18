@@ -119,7 +119,7 @@ function Dashboard() {
             placeholder="Paste the Job Description here..."
           />
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', justifyContent: 'space-between' }}>
+          <div className={style.dashboardBtnGroup}>
             <button className={style.analyzeBtn} onClick={handleUplaod}>
               Analyze
             </button>

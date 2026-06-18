@@ -8,6 +8,15 @@
   flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeBtn {
+  display: none;
+}
+
+.backdrop {
+  display: none;
 }
 
 .sideBarIcon {
@@ -67,22 +76,66 @@
 
 @media screen and (max-width: 780px) {
   .sideBar {
-    width: 100%;
-    height: auto;
-    min-width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    min-width: unset;
+    transform: translateX(-100%);
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-right: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
   }
   
+  .sideBarActive {
+    transform: translateX(0);
+  }
+  
+  .backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+  }
+  
+  .closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .closeBtn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
   .sideBarOptionBlock {
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 15px;
+    flex-wrap: nowrap;
   }
   
   .sideBarOption {
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: 14px 20px;
+    font-size: 16px;
   }
 }
