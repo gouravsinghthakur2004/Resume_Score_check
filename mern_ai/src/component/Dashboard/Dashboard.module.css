@@ -1,0 +1,336 @@
+.dashboard {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  background: var(--bg-primary);
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* LEFT SECTION */
+.dashboardLeft {
+  flex: 0.7;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 35px;
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardHeader {
+  margin-bottom: 25px;
+}
+
+.dashboardHeaderTitle {
+  font-size: 14px;
+  color: var(--accent-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 5px 0;
+}
+
+.dashboardHeaderLargeTitle {
+  font-size: 36px;
+  color: var(--text-primary);
+  font-weight: 800;
+  margin: 0;
+}
+
+.alertInfo {
+  padding: 20px;
+  background: rgba(99, 102, 241, 0.04);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.alertInfo h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.dashboardInstruction {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.dashboardInstruction li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.dashboardUploadResume {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.dashboardResumeBlock {
+  width: 100%;
+  padding: 24px;
+  text-align: center;
+  background: var(--bg-tertiary);
+  border: 2px dashed var(--border-color);
+  color: var(--text-secondary);
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.dashboardResumeBlock:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+}
+
+.dashboardInputField {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+  
+}
+
+.dashboardInputField input {
+  display: none;
+  
+}
+
+.analyzeAiBtn {
+  background: var(--accent-gradient);
+  color: var(--text-primary);
+  padding: 14px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: var(--accent-glow);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.analyzeAiBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.45);
+}
+
+.jobDesc {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  flex-grow: 1;
+}
+
+.textarea {
+  flex: 1;
+  min-height: 180px;
+  resize: none;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  outline: none;
+  font-size: 15px;
+  font-family: var(--font-main);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.analyzeBtn {
+  width: 140px;
+  height:300px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  box-shadow: var(--accent-glow);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.analyzeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+}
+
+.resetBtn {
+  width: 140px;
+  height: 50px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--bg-tertiary);
+  transition: all 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetBtn:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* RIGHT SECTION */
+.dashboardRight {
+  flex: 0.3;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.dashboardRightTopCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.dashboardRightTopCard h3 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.profileImg {
+  width: 90px;
+  height: 90px;
+  margin: 20px auto;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  box-shadow: var(--accent-glow);
+  object-fit: cover;
+}
+
+.dashboardRightTopCard h2 {
+  font-size: 22px;
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: 700;
+}
+
+.scoreCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 30px 25px;
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scoreCard h2 {
+  font-size: 16px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: center;
+}
+
+.scoreContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+  color: var(--success-color);
+}
+
+.scoreContainer h1 {
+  font-size: 56px;
+  font-weight: 800;
+  margin: 0;
+  background: var(--success-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.feedback {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 10px;
+}
+
+.feedback h3 {
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.feedback p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1000px) {
+  .dashboard {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .dashboardLeft {
+    width: 100%;
+    flex: none;
+  }
+
+  .dashboardRight {
+    width: 100%;
+    flex: none;
+  }
+
+  .jobDesc {
+    flex-direction: column;
+  }
+
+  .textarea {
+    width: 100%;
+    min-height: 150px;
+  }
+
+  .analyzeBtn {
+    width: 100%;
+    height: 54px;
+  }
+}

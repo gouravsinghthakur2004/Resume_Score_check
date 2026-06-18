@@ -1,0 +1,106 @@
+.history {
+  flex: 0.8;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 40px;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
+}
+
+.historyCardBlock {
+  display: grid;
+  gap: 25px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.historyCard {
+  width: 100%;
+  padding: 25px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.historyCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
+}
+
+.cardPercentage {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--success-color);
+  background: var(--success-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-self: flex-start;
+  margin-bottom: 5px;
+}
+
+.historyCard h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.historyCard p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.historyCard strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.cardDate {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  margin-top: auto !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+}
+
+.noHistory {
+  color: var(--text-secondary);
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: 20px;
+}
+
+.noHistory h2 {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 780px) {
+  .history {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+  
+  .historyCardBlock {
+    grid-template-columns: 1fr;
+  }
+}

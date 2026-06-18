@@ -1,0 +1,90 @@
+.admin {
+  flex: 0.8;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 40px;
+  background-color: var(--bg-primary);
+  box-sizing: border-box;
+}
+
+.adminBlock {
+  display: grid;
+  gap: 25px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.adminCard {
+  width: 100%;
+  padding: 25px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adminCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15);
+}
+
+.adminCard h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.adminCard p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.adminCard h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 5px 0;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.adminCard strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.noData {
+  color: var(--text-secondary);
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: 20px;
+}
+
+.noData h2 {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 780px) {
+  .admin {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+  
+  .adminBlock {
+    grid-template-columns: 1fr;
+  }
+}
