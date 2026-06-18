@@ -32,7 +32,7 @@ const handleLogin=async()=>{
             localStorage.setItem("userInfo", JSON.stringify(response.data.user));
             setLogin(true);
             localStorage.setItem("isLogin", true);
-            navigate("/");
+            navigate("/dashboard");
             console.log("Logged in user:", response.data.user);
         } else {
             alert("Login failed: invalid response from server.");

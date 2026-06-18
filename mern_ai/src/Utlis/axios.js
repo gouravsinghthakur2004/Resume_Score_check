@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance=axios.create({
-    baseURL:"http://localhost:5000/"
+    baseURL:"https://resume-score-check.onrender.com"
 })
 
 // Request interceptor to automatically attach user ID header if logged in
