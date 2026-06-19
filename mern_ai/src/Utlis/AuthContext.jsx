@@ -3,15 +3,36 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    // Read from localStorage safely
-    var login = localStorage.getItem("isLogin");
-    var userInfoData = localStorage.getItem("userInfo");
-
-   
-    const [isLogin, setLogin] = useState(login ?login:false);
+    const [isLogin, setLoginState] = useState(() => {
+        return localStorage.getItem("isLogin") === "true";
+    });
     
+    const [userInfo, setUserInfoState] = useState(() => {
+        const userInfoData = localStorage.getItem("userInfo");
+        if (userInfoData) {
+            try {
+                return JSON.parse(userInfoData);
+            } catch (e) {
+                console.error("Failed to parse userInfo from localStorage", e);
+                return null;
+            }
+        }
+        return null;
+    });
 
-    const [userInfo, setUserInfo] = useState(userInfoData ? JSON.parse(userInfoData) : null);
+    const setLogin = (val) => {
+        setLoginState(val);
+        localStorage.setItem("isLogin", val ? "true" : "false");
+    };
+
+    const setUserInfo = (val) => {
+        setUserInfoState(val);
+        if (val) {
+            localStorage.setItem("userInfo", JSON.stringify(val));
+        } else {
+            localStorage.removeItem("userInfo");
+        }
+    };
 
     return (
         <AuthContext.Provider value={{ isLogin, setLogin, userInfo, setUserInfo }}>

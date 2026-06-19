@@ -1,6 +1,8 @@
 const mongoose =require("mongoose")
 
-mongoose.connect(process.env.MONGO_URI).then((res)=>{
+const mongoURI = process.env.MONGO_URI || process.env.MONGO_URI;
+
+mongoose.connect(mongoURI).then((res)=>{
     console.log("Database connected successfully")
 
 }).catch(err=>{

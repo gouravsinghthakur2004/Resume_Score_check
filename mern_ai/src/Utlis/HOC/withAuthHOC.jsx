@@ -7,15 +7,19 @@ const withAuthHOC = (WrappedComponent) => {
         const navigate = useNavigate();
         const { isLogin, setLogin } = useContext(AuthContext); 
 
-        const isAuthenticated = isLogin === true || isLogin === "true";
+        const localLogin = localStorage.getItem("isLogin") === "true";
 
         useEffect(() => {
-            const localLogin = localStorage.getItem("isLogin");
-            if (!localLogin) {
+            const hasLocalLogin = localStorage.getItem("isLogin") === "true";
+            if (!hasLocalLogin) {
                 setLogin(false);
-                navigate("/login");
+                navigate("/login", { replace: true });
+            } else if (!isLogin) {
+                setLogin(true);
             }
-        }, [navigate, setLogin]);
+        }, [isLogin, navigate, setLogin]);
+
+        const isAuthenticated = isLogin || localLogin;
 
         if (!isAuthenticated) {
             return null;
