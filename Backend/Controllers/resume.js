@@ -5,10 +5,10 @@ const pdfParse = require("pdf-parse");
 const path=require("path");
 const {CohereClient}=require("cohere-ai");
 
-const cohereToken = process.env.COHERE_API_KEY || process.env.COHERE_API_KEY;
-const cohere = new CohereClient({
+const cohereToken = process.env.COHERE_API_KEY;
+const cohere = cohereToken ? new CohereClient({
     token: cohereToken
-});
+}) : null;
 
 exports.addResume=async(req,res)=>{
     let pdfPath = null;
@@ -47,6 +47,9 @@ exports.addResume=async(req,res)=>{
         let reason = "";
 
         try {
+            if (!cohere) {
+                throw new Error("Cohere API key is not configured.");
+            }
             let response;
             let lastError;
             const modelsToTry = ["command-r-08-2024", "command-r-plus-08-2024", "command-a-03-2025"];
