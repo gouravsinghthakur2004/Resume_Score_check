@@ -111,7 +111,7 @@ exports.addResume=async(req,res)=>{
                 score = Math.min(100, Math.round(ratio * 100 * 1.5));
                 if (score < 10) score = 15; // base score if some words matched
 
-                reason = `[AI Fallback analysis - Cohere API was unreachable]\n\nThe resume was evaluated using keyword overlap analysis because the Cohere API connection timed out. \n\nYour resume matches approximately ${score}% of the required keywords in the job description.\n\nMatching keywords found: ${matchedKeywords.slice(0, 15).join(", ")}.\n\nTo improve your score, consider adding more specific keywords from the job description to your resume, highlighting relevant skills and experiences.`;
+                reason = `[AI Fallback analysis - Cohere API was unreachable (Reason: ${cohereErr.message || cohereErr})]\n\nThe resume was evaluated using keyword overlap analysis because the Cohere API connection timed out. \n\nYour resume matches approximately ${score}% of the required keywords in the job description.\n\nMatching keywords found: ${matchedKeywords.slice(0, 15).join(", ")}.\n\nTo improve your score, consider adding more specific keywords from the job description to your resume, highlighting relevant skills and experiences.`;
             }
         }
 
